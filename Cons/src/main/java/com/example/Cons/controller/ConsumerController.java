@@ -1,7 +1,7 @@
 package com.example.Cons.controller;
 
-import com.example.Cons.model.PRequest;
 import com.example.Cons.model.PRequestDto;
+import com.example.Cons.model.PRequest;
 import com.example.Cons.service.ConsumerService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -19,9 +19,9 @@ public class ConsumerController {
     private ConsumerService consumerService;
 
     @PostMapping
-    public void saveRecord(PRequest request){
+    public void saveRecord(PRequestDto request){
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-        PRequestDto requestDto = modelMapper.map(request, PRequestDto.class);
+        PRequest requestDto = modelMapper.map(request, PRequest.class);
         if(consumerService.saveRecord(requestDto)){
             System.out.println("Record saved: " + request);
         }else {

@@ -1,6 +1,6 @@
 package com.example.Cons.config;
 
-import com.example.Cons.model.PRequest;
+import com.example.Cons.model.PRequestDto;
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -35,14 +35,14 @@ public class KafkaConsumerConfig {
     }
 
     @Bean
-    public ConsumerFactory<String, PRequest> consumerFactory(){
+    public ConsumerFactory<String, PRequestDto> consumerFactory(){
         return new DefaultKafkaConsumerFactory<>(consumerConfig(), new StringDeserializer(),
-                new JsonDeserializer<>(PRequest.class));
+                new JsonDeserializer<>(PRequestDto.class));
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, PRequest> containerFactory(){
-        ConcurrentKafkaListenerContainerFactory<String, PRequest> containerFactory =
+    public ConcurrentKafkaListenerContainerFactory<String, PRequestDto> containerFactory(){
+        ConcurrentKafkaListenerContainerFactory<String, PRequestDto> containerFactory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         containerFactory.setConsumerFactory(consumerFactory());
         return containerFactory;

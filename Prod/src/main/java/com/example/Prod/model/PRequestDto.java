@@ -3,7 +3,7 @@ package com.example.Prod.model;
 import lombok.Data;
 
 @Data
-public class PRequest {
+public class PRequestDto {
 
     private String preferenceID;
     private String preferenceIDType;

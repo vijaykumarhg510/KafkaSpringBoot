@@ -1,6 +1,6 @@
 package com.example.Prod.service;
 
-import com.example.Prod.model.PRequest;
+import com.example.Prod.model.PRequestDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 public class ProdService {
 
     @Autowired
-    private KafkaTemplate<String, PRequest> kafkaTemplate;
+    private KafkaTemplate<String, PRequestDto> kafkaTemplate;
 
 
-    public void publishRequest(PRequest PRequest){
-        this.kafkaTemplate.send("newTopic", PRequest);
+    public void publishRequest(PRequestDto PRequestDto) {
+        this.kafkaTemplate.send("newTopic", PRequestDto);
     }
 }

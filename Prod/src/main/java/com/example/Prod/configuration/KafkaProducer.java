@@ -1,6 +1,6 @@
 package com.example.Prod.configuration;
 
-import com.example.Prod.model.PRequest;
+import com.example.Prod.model.PRequestDto;
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -31,12 +31,12 @@ public class KafkaProducer {
     }
 
     @Bean
-    public ProducerFactory<String, PRequest> producerFactory(){
+    public ProducerFactory<String, PRequestDto> producerFactory() {
         return new DefaultKafkaProducerFactory<>(producerConfig());
     }
 
     @Bean
-    public KafkaTemplate<String, PRequest> kafkaTemplate(){
+    public KafkaTemplate<String, PRequestDto> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 }

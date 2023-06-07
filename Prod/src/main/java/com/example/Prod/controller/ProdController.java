@@ -1,6 +1,6 @@
 package com.example.Prod.controller;
 
-import com.example.Prod.model.PRequest;
+import com.example.Prod.model.PRequestDto;
 import com.example.Prod.service.ProdService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,8 +15,8 @@ public class ProdController {
 
 
     @PostMapping
-    public String produceMessages(@RequestBody PRequest PRequest){
-        prodService.publishRequest(PRequest);
+    public String produceMessages(@RequestBody PRequestDto PRequestDto) {
+        prodService.publishRequest(PRequestDto);
         return "posted";
     }
 }

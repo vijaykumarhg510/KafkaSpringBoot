@@ -12,9 +12,6 @@ import org.springframework.kafka.config.TopicBuilder;
 @Configuration
 public class TopicCreation {
 
-    @Value("${spring.kafka.bootstrap-servers}")
-    private String bootstrapAddress;
-
     @Bean
     public NewTopic topic(){
         return TopicBuilder.name("newTopic").build();
